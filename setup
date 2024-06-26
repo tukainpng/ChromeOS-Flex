@@ -1,0 +1,12 @@
+#!/bin/sh
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git npm nodejs clang gcc make curl wget fzf
+
+### Neovim ###
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+git clone --depth=1 https://github.com/tukainpng/nvim ~/.config/nvim
+##############
+
