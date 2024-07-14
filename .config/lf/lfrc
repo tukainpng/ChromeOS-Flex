@@ -4,7 +4,6 @@ set ifs "\n"
 set scrolloff 8
 set cursorpreviewfmt "\033[7;2m"
 set icons true
-set sixel true
 set previewer ~/.local/bin/previewer
 set hidden true
 
@@ -15,9 +14,7 @@ map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
 map <delete> delete
-map w walls
 map u upload
-map D drag-n-drop
 #map c push A<c-u>
 map I :rename; cmd-home # at the very beginning
 map A :rename; cmd-end # at the very end
@@ -90,18 +87,8 @@ cmd delete-regex ${{
     rm -rf $expr
 }}
 
-cmd walls ${{
-    pkill swaybg || echo "Swaybg já está fechado"
-    cp $fx ~/.config/sway/wp && swaymsg reload
-    pkill lf
-}}
-
 cmd upload ${{
     curl -F"file=@$fx" -Fsecret= https://0x0.st | wl-copy && wl-paste -n | qrencode -o ~/.url.png
     imv ~/.url.png && rm ~/.url.png
-}}
-
-cmd drag-n-drop ${{
-    dragon-drop -a -x $fx
 }}
 
