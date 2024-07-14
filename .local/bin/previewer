@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case "$(file -Lb --mime-type -- "$1")" in
+  image/*)
+    chafa -f sixel -s "$2x$3" --animate off --polite on "$1"
+    exit 1
+    ;;
+  audio/*)
+    mediainfo "$1"
+    ;;
+  video/*)
+    ffmpegthumbnailer -i "$1" -s 0 -o ~/.config/lf/.thumb.png
+    chafa -f sixel -s "$2x$3" --animate off --polite on ~/.config/lf/.thumb.png
+    rm ~/.config/lf/.thumb.png
+    exit 1
+    ;;
+  *)
+    cat "$1"
+    ;;
+esac
+

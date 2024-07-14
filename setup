@@ -1,12 +1,22 @@
 #!/bin/sh
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y git npm nodejs clang gcc make curl wget fzf
+sudo apt install -y git npm nodejs clang gcc make curl wget fzf lf p7zip htop neofetch mpv \
+	mediainfo ffmpeg chafa
 
 ### Neovim ###
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 git clone --depth=1 https://github.com/tukainpng/nvim ~/.config/nvim
+rm nvim-linux64.tar.gz
 ##############
 
+### Lazygit ###
+wget https://github.com/jesseduffield/lazygit/releases/download/v0.43.1/lazygit_0.43.1_Linux_x86_64.tar.gz
+tar xf lazygit_0.43.1_Linux_x86_64.tar.gz
+rm LICENSE README.md
+chmod +x lazygit
+mv lazygit /usr/local/bin
+rm lazygit_0.43.1_Linux_x86_64.tar.gz
+###############

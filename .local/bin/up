@@ -1,0 +1,4 @@
+#!/bin/sh
+FILE=$1
+curl -F"file=@$FILE" -Fsecret= https://0x0.st | wl-copy && wl-paste -n | qrencode -o ~/.url.png
+imv ~/.url.png && rm ~/.url.png
