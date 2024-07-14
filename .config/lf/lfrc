@@ -2,7 +2,6 @@ set shell bash
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 8
-set cursorpreviewfmt "\033[7;2m"
 set icons true
 set previewer ~/.local/bin/previewer
 set hidden true
